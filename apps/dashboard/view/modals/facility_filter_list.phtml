@@ -1,0 +1,102 @@
+<?php
+
+
+$facility_id = $_REQUEST['id'];
+
+require_once dirname(__DIR__, 2) . '/controller/CTRLFacilityFilter.php';
+
+$instanceOfModalFacilityList = new CTRLFacilityFilter('bonds_and_guarantee', 'loans', 'overdraft_register', 'all_branches');
+
+$method_for_facility_list = $instanceOfModalFacilityList->get_facility_details($facility_id);
+
+
+$records = $method_for_facility_list->fetchAll();
+
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Facilities List</h5>
+            </div>
+            <div class="card-body">
+                <table id="modal_data_table" class="display table buttons-datatables table-responsive modal_data_table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Customer ID</th>
+                            <th><?php if($facility_id !== 3){; ?>Branch <?php } ?></th>
+                            <th>Currency</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        foreach ($records as $cll) {
+                            $currency = "";
+                            $amount = "";
+                            $branch = "";
+
+                            if ($facility_id == 1){
+                                $currency .= $cll['ccy'];
+                                $amount .= $cll['amount']; 
+                                $branch .= $cll['branch_name'];
+                            }
+
+                            elseif ($facility_id == 2){
+                                $currency .= $cll['currency'];
+                                $amount .= $cll['disbursed_amount']; 
+                                $branch .= $cll['branch_name'];
+                            }
+
+                            elseif ($facility_id == 3){
+                                $currency .= $cll['account_currency'];
+                                $amount .= $cll['approved_facility']; 
+                                $branch .= "N/A";
+                            }
+                        ?>
+
+                            <tr>
+                                <td><?php echo $cll['customer_name']; ?></td>
+                                <td><?php echo $cll['customer_id']; ?></td>
+                                <td><?php echo $branch; ?></td>
+                                <td><?php echo $currency; ?></td>
+                                <td><?php echo $amount; ?></td>
+                            </tr>
+
+                        <?php
+                        }
+                        ?>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#modal_data_table').DataTable({
+            dom: "Bfrtip",
+
+            buttons: ["copy", "csv", "excel", "print"],
+
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function(row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
+    });
+    
+</script>

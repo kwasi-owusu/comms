@@ -1,0 +1,159 @@
+<?php
+
+$classification = $_REQUEST['id'];
+
+switch ($classification) {
+
+    case 1:
+        $classification = 'NORM';
+        break;
+
+    case 2:
+        $classification = 'OLEM';
+        break;
+
+    case 3:
+        $classification = 'SUBT';
+        break;
+
+    case 4:
+        $classification = 'DOUBT';
+        break;
+
+    case 5:
+        $classification = 'LOSS';
+        break;
+
+    default:
+        'Unknown';
+}
+
+require_once dirname(__DIR__, 2) . '/controller/CTRLCollateralStatusFilter.php';
+
+$instanceOfModalCollateralStatus = new CTRLCollateralStatusFilter('collateral_register', 'bonds_and_guarantee', 'loans', 'overdraft_register', 'all_branches');
+
+$method_for_search_admin = $instanceOfModalCollateralStatus->collateralStatusFilter($classification);
+
+//$records = json_decode($method_for_search_admin);
+
+$records = $method_for_search_admin->fetchAll();
+
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Collateral By Status- <?php echo $classification; ?></h5>
+            </div>
+            <div class="card-body">
+                <table id="modal_data_table" class="display table buttons-datatables table-responsive modal_data_table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Coll. Code</th>
+                            <th>Branch</th>
+                            <th>Customer ID</th>
+                            <th>Category</th>
+                            <th>Coll. Type</th>
+                            <th>Customer Name</th>
+                            <th>Disbursed Amt</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                            <th>Fac. Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        foreach ($records as $cll) {
+                        ?>
+
+                            <tr>
+                                <td><?php echo $cll['collateral_code']; ?></td>
+                                <td><?php echo $cll['branch_name']; ?></td>
+                                <td><?php echo $cll['liability_number']; ?></td>
+                                <td><?php echo $cll['collateral_category']; ?></td>
+                                <td><?php echo $cll['collateral_type']; ?></td>
+                                <td><?php echo $cll['customer_name']; ?></td>
+                                <td><?php echo isset($cll['facility_disbursement_amt']) ? number_format($cll['facility_disbursement_amt'], 2) : null; ?></td>
+                                <td><?php echo isset($cll['collateral_value']) ? number_format($cll['collateral_value'], 2) : null; ?></td>
+                                <td><?php echo $cll['collateral_status']; ?></td>
+                                <td><?php echo $cll['facility_type']; ?></td>
+                            </tr>
+
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <th>Coll. Code</th>
+                            <th>Branch</th>
+                            <th>Customer ID</th>
+                            <th>Category</th>
+                            <th>Coll. Type</th>
+                            <th>Customer Name</th>
+                            <th>Disbursed Amt</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                            <th>Fac. Type</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('#modal_data_table').DataTable({
+            dom: "Bfrtip",
+
+            buttons: ["copy", "csv", "excel", "print"],
+
+            initComplete: function() {
+                // Apply the search
+                this.api()
+                    .columns()
+                    .every(function() {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change clear', function() {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+            },
+
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function(row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            new DataTable("#ajax-datatables", {
+                ajax: "../assets/json/datatable.json"
+            });
+        });
+
+        $("#modal_data_table tfoot th").each(function() {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+        });
+
+    });
+</script>
