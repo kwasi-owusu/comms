@@ -214,7 +214,7 @@ class MDLSecureDashboard implements ISecureDashboard
 
     public function get_collateral_grouped_by_currency(string $table_a, $table_b, $table_c, $table_d, $classification, $currency){
       
-        $stmt = $this->thisPDO->prepare("SELECT collateral_currency, COUNT(collateral_id) AS TotalFacilityDisbursedByCurrency 
+        $stmt = $this->thisPDO->prepare("SELECT collateral_currency, SUM(collateral_value) AS TotalFacilityDisbursedByCurrency 
         FROM $table_a 
         GROUP BY collateral_currency");
         

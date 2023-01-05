@@ -1,0 +1,83 @@
+<?php
+
+$liability_id   = $_GET['liability_id'];
+$group_by       = $_GET['group_by'];
+
+$customer_id = isset($liability_id) ? strip_tags(trim($liability_id)) : null;
+$selection_by = isset($group_by) ? strip_tags(trim($group_by)) : null;
+
+require_once dirname(__DIR__, 2) . '/controller/CustomerCollateralAnalysisCTRL.php';
+
+$instanceOfCustomerCollateralAnalysisCTRL = new CustomerCollateralAnalysisCTRL('collateral_register');
+
+$response = $instanceOfCustomerCollateralAnalysisCTRL->customer_collateral_analysis($customer_id, $selection_by);
+
+
+$records = $response['records_array'];
+
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Collaterals Grouped by Classification</h5>
+            </div>
+            <div class="card-body">
+                <table id="modal_data_table" class="display table buttons-datatables table-responsive modal_data_table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Collateral Classification</th>
+                            <th>Total Collateral Value</th>
+                            <th>Currency</th>
+                            <th>Customer Name</th>
+                            <th>Account Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        foreach ($records as $cll) {
+                        ?>
+
+                            <tr>
+                                <td><?php echo $cll['classification']; ?></td>
+                                <td><?php echo number_format($cll['sumCollateralValue'], 2); ?></td>
+                                <td><?php echo $cll['collateral_currency']; ?></td>
+                                <td><?php echo $cll['customer_name']; ?></td>
+                                <td><?php echo $cll['account_number']; ?></td>
+                            </tr>
+
+                        <?php
+                        }
+                        ?>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#modal_data_table').DataTable({
+            dom: "Bfrtip",
+
+            buttons: ["copy", "csv", "excel", "print"],
+
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function(row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
+    });
+</script>

@@ -100,7 +100,7 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
 
   $(document).ready(function () {
     if ($.fn.dataTable.isDataTable("#exposure_by_facility_table")) {
-      $( "#exposure_by_facility_table").DataTable().destroy();
+      $("#exposure_by_facility_table").DataTable().destroy();
       // var table = $("#exposure_by_facility_table").DataTable();
       // table.clear();
       // table.rows.add(data).draw();
@@ -151,7 +151,7 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
 
   $(document).ready(function () {
     if ($.fn.dataTable.isDataTable("#exposure_by_collateral_table")) {
-      $( "#exposure_by_collateral_table").DataTable().destroy();
+      $("#exposure_by_collateral_table").DataTable().destroy();
       // var table = $("#exposure_by_collateral_table").DataTable();
       // table.clear();
       // table.rows.add(data).draw();
@@ -203,3 +203,78 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
     }
   });
 });
+
+function collateral_by_currency(itm) {
+  let liability_id = $(itm).attr("data-id");
+  let group_by = "currency";
+
+  let post_data = {
+    liability_id: liability_id,
+    group_by: group_by,
+  };
+  let paramsThis = $.param(post_data);
+
+
+  $("<div>").load(
+    "apps/reports/view/modals/collateral_by_currency.phtml?" + paramsThis,
+    function (data) {
+      $("#modal_content_here").html(data);
+    }
+  );
+}
+
+function collateral_by_category(itm) {
+  let liability_id = $(itm).attr("data-id");
+  let group_by = "category";
+
+  let post_data = {
+    liability_id: liability_id,
+    group_by: group_by,
+  };
+  let paramsThis = $.param(post_data);
+
+  $("<div>").load(
+    "apps/reports/view/modals/collateral_by_category.phtml?" + paramsThis,
+    function (data) {
+      $("#modal_content_here").html(data);
+    }
+  );
+}
+
+
+function collateral_by_type(itm) {
+  let liability_id = $(itm).attr("data-id");
+  let group_by = "type";
+
+  let post_data = {
+    liability_id: liability_id,
+    group_by: group_by,
+  };
+  let paramsThis = $.param(post_data);
+
+  $("<div>").load(
+    "apps/reports/view/modals/collateral_by_type.phtml?" + paramsThis,
+    function (data) {
+      $("#modal_content_here").html(data);
+    }
+  );
+}
+
+function collateral_by_classification(itm) {
+  let liability_id = $(itm).attr("data-id");
+  let group_by = "classification";
+
+  let post_data = {
+    liability_id: liability_id,
+    group_by: group_by,
+  };
+  let paramsThis = $.param(post_data);
+
+  $("<div>").load(
+    "apps/reports/view/modals/collateral_by_classification.phtml?" +
+    paramsThis,
+    function (data) {
+      $("#modal_content_here").html(data);
+    }
+  );
+}

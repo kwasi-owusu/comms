@@ -455,24 +455,24 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                                             <ul class="dropdown-menu dropdown-menu-end">
 
                                                                 <li>
-                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="currency" data-id="<?php echo $cll['liability_number']; ?>" onclick="facility_details(this)" class="dropdown-item edit-item-btn">
+                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="currency" data-id="<?php echo $cll['liability_number']; ?>" onclick="collateral_by_currency(this)" class="dropdown-item edit-item-btn">
                                                                         <i class="ri-home-fill align-bottom me-2 text-muted"></i>
                                                                         Group Client Collateral By Currency
                                                                     </a>
 
-                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="category" data-id="<?php echo $cll['liability_number']; ?>" onclick="facility_details(this)" class="dropdown-item edit-item-btn">
+                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="category" data-id="<?php echo $cll['liability_number']; ?>" onclick="collateral_by_category(this)" class="dropdown-item edit-item-btn">
                                                                         <i class="ri-home-fill align-bottom me-2 text-muted"></i>
                                                                         Group Client Collateral By Category
                                                                     </a>
-                                                                   
 
-                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="type" data-id="<?php echo $cll['liability_number']; ?>" onclick="facility_details(this)" class="dropdown-item edit-item-btn">
+
+                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="type" data-id="<?php echo $cll['liability_number']; ?>" onclick="collateral_by_type(this)" class="dropdown-item edit-item-btn">
                                                                         <i class="ri-home-fill align-bottom me-2 text-muted"></i>
                                                                         Group Client Collateral By Collateral Type
                                                                     </a>
-                                                                    
 
-                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="classification" data-id="<?php echo $cll['liability_number']; ?>" onclick="facility_details(this)" class="dropdown-item edit-item-btn">
+
+                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl" href="javascript:(0);" data-grp="classification" data-id="<?php echo $cll['liability_number']; ?>" onclick="collateral_by_classification(this)" class="dropdown-item edit-item-btn">
                                                                         <i class="ri-home-fill align-bottom me-2 text-muted"></i>
                                                                         Group Client Collateral By Classification
                                                                     </a>
@@ -664,6 +664,22 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
 
                         </div><!-- end row -->
 
+                        <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="modal_content_here">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
 
                     </div>
                     <!-- container-fluid -->
@@ -677,7 +693,6 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
             <!-- end main content-->
         </div>
         <!-- END layout-wrapper -->
-
 
 
         <!--start back-to-top-->

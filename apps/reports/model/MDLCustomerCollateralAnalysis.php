@@ -17,8 +17,8 @@ class MDLCustomerCollateralAnalysis implements ICollateralAnalysis{
 
     public function collateral_by_currency(string $table_a, int $customer_id): object{
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_code, account_number, branch_name, liability_number, collateral_category, 
-        customer_name, collateral_type, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
+        $stmt = $this->thisPDO->prepare("SELECT COUNT(collateral_id) AS totalCollaterals, collateral_code, account_number, 
+        liability_number, collateral_category, customer_name, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
         FROM $table_a 
         WHERE liability_number = :cd
         GROUP BY collateral_currency
@@ -34,8 +34,8 @@ class MDLCustomerCollateralAnalysis implements ICollateralAnalysis{
 
     public function collateral_by_category(string $table_a, int $customer_id): object{
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_code, account_number, branch_name, liability_number, collateral_category, 
-        customer_name, collateral_type, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
+        $stmt = $this->thisPDO->prepare("SELECT COUNT(collateral_id) AS totalCollaterals, collateral_code, account_number, 
+        liability_number, collateral_category, customer_name, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
         FROM $table_a 
         WHERE liability_number = :cd
         GROUP BY collateral_category
@@ -51,8 +51,8 @@ class MDLCustomerCollateralAnalysis implements ICollateralAnalysis{
 
     public function collateral_by_type(string $table_a, int $customer_id): object{
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_code, account_number, branch_name, liability_number, collateral_category, 
-        customer_name, collateral_type, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
+        $stmt = $this->thisPDO->prepare("SELECT COUNT(collateral_id) AS totalCollaterals, collateral_code, account_number, collateral_type,
+        liability_number, collateral_category, customer_name, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
         FROM $table_a 
         WHERE liability_number = :cd
         GROUP BY collateral_type
@@ -68,8 +68,8 @@ class MDLCustomerCollateralAnalysis implements ICollateralAnalysis{
     
     public function collateral_by_classification(string $table_a, int $customer_id): object{
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_code, account_number, branch_name, liability_number, collateral_category, 
-        customer_name, collateral_type, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
+        $stmt = $this->thisPDO->prepare("SELECT COUNT(collateral_id) AS totalCollaterals, collateral_code, account_number, 
+        liability_number, collateral_category, customer_name, SUM(collateral_value) AS sumCollateralValue, classification, collateral_currency
         FROM $table_a 
         WHERE liability_number = :cd
         GROUP BY classification
