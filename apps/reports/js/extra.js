@@ -1,6 +1,4 @@
 $("#bonds_and_guarantee_filter").on("submit", function (e) {
-  //$("#saveBtn").prop("disabled", true);
-  //$("#list_loader").show();
   e.preventDefault();
 
   let select_client = $("#select_client").val();
@@ -23,25 +21,27 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
     // cache: false,
     //processData: false,
     success: function (d_data) {
-      let currency_symbols_fl = [];
-      let count_all = [];
+      // let currency_symbols_fl = [];
+      // let count_all = [];
       let collateralVal = [];
 
       let arr = d_data.get_filter_for_collateral_by_currency;
 
-      $.each(d_data.get_filter_for_collateral_by_currency, function (key, val) {
-        currency_symbols_fl.push(val.collateral_currency);
-      });
+      // $.each(d_data.get_filter_for_collateral_by_currency, function (key, val) {
+      //   currency_symbols_fl.push(val.collateral_currency);
+      // });
 
-      $.each(d_data.get_filter_for_collateral_by_currency, function (key, val) {
-        count_all.push(val.totalNumberOfCollaterals);
-      });
+      // $.each(d_data.get_filter_for_collateral_by_currency, function (key, val) {
+      //   count_all.push(val.totalNumberOfCollaterals);
+      // });
 
       $.each(d_data.get_filter_for_collateral_by_currency, function (key, val) {
         collateralVal.push(val.collateralVal);
       });
 
-      //$("#list_loader").hide();
+      if (d_data.response == "success") {
+
+          //$("#list_loader").hide();
 
       //setInterval("location.reload()", 3000);
 
@@ -95,58 +95,62 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
       );
 
       $("#exposure_by_collateral_currency_table").empty().append(tableRows);
-    },
-  });
 
-  $(document).ready(function () {
-    if ($.fn.dataTable.isDataTable("#exposure_by_facility_table")) {
-      $("#exposure_by_facility_table").DataTable().destroy();
-      // var table = $("#exposure_by_facility_table").DataTable();
-      // table.clear();
-      // table.rows.add(data).draw();
-    } else {
-      $("#exposure_by_facility_table").DataTable({
-        order: [[1, "desc"]],
-        pageLength: 10,
 
-        ajax: {
-          url: "apps/reports/controller/CustomerExposureFilterCTRL.php?mode=filter_for_facility_by_currency_list",
-          dataSrc: "filter_for_facility_by_currency_list",
-          method: "POST",
-          dataType: "JSON",
-          data: {
-            select_client: select_client,
-            filter_action: filter_action,
-            bonds_start_date: bonds_start_date,
-            bonds_end_date: bonds_end_date,
-          },
-        },
+        //$(document).ready(function () {
+          if ($.fn.dataTable.isDataTable("#exposure_by_facility_table")) {
+            $("#exposure_by_facility_table").DataTable().destroy();
+            // var table = $("#exposure_by_facility_table").DataTable();
+            // table.clear();
+            // table.rows.add(data).draw();
+          } else {
+            $("#exposure_by_facility_table").DataTable({
+              order: [[1, "desc"]],
+              pageLength: 10,
 
-        columns: [
-          { data: "customer_name" },
-          { data: "totalAmt" },
-          { data: "ccy" },
-        ],
-
-        dom: "Bfrtip",
-
-        buttons: ["copy", "csv", "excel", "print"],
-
-        responsive: {
-          details: {
-            display: $.fn.dataTable.Responsive.display.modal({
-              header: function (row) {
-                var data = row.data();
-                return "Details for " + data[0] + " " + data[1];
+              ajax: {
+                url: "apps/reports/controller/CustomerExposureFilterCTRL.php?mode=filter_for_facility_by_currency_list",
+                dataSrc: "filter_for_facility_by_currency_list",
+                method: "POST",
+                dataType: "JSON",
+                data: {
+                  select_client: select_client,
+                  filter_action: filter_action,
+                  bonds_start_date: bonds_start_date,
+                  bonds_end_date: bonds_end_date,
+                },
               },
-            }),
-            renderer: $.fn.dataTable.Responsive.renderer.tableAll({
-              tableClass: "table",
-            }),
-          },
-        },
-      });
-    }
+
+              columns: [
+                { data: "customer_name" },
+                { data: "totalAmt" },
+                { data: "ccy" },
+              ],
+
+              dom: "Bfrtip",
+
+              buttons: ["copy", "csv", "excel", "print"],
+
+              responsive: {
+                details: {
+                  display: $.fn.dataTable.Responsive.display.modal({
+                    header: function (row) {
+                      var data = row.data();
+                      return "Details for " + data[0] + " " + data[1];
+                    },
+                  }),
+                  renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                    tableClass: "table",
+                  }),
+                },
+              },
+            });
+          }
+        //});
+      }
+
+    
+    },
   });
 
   $(document).ready(function () {
@@ -214,7 +218,6 @@ function collateral_by_currency(itm) {
   };
   let paramsThis = $.param(post_data);
 
-
   $("<div>").load(
     "apps/reports/view/modals/collateral_by_currency.phtml?" + paramsThis,
     function (data) {
@@ -240,7 +243,6 @@ function collateral_by_category(itm) {
     }
   );
 }
-
 
 function collateral_by_type(itm) {
   let liability_id = $(itm).attr("data-id");
@@ -271,8 +273,7 @@ function collateral_by_classification(itm) {
   let paramsThis = $.param(post_data);
 
   $("<div>").load(
-    "apps/reports/view/modals/collateral_by_classification.phtml?" +
-    paramsThis,
+    "apps/reports/view/modals/collateral_by_classification.phtml?" + paramsThis,
     function (data) {
       $("#modal_content_here").html(data);
     }

@@ -567,40 +567,7 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                         </div>
 
                     </div>
-
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-header border-0 align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Value of Collateral Exposure by Currency</h4>
-                                </div><!-- end card header -->
-
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-xl-12">
-
-                                            <table data-id="collateral_value_body_here" id="" class="display table table-responsive" style="width:30%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Total Number</th>
-                                                        <th>Sum Value</th>
-                                                        <th>Currency</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="exposure_by_collateral_currency_table">
-
-                                                </tbody>
-
-                                            </table>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div><!-- end card body -->
-                            </div><!-- end card -->
-                        </div><!-- end col -->
-
-                    </div>
-
+                    
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="card">
@@ -682,6 +649,40 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
 
 
                     </div>
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header border-0 align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">Value of Collateral Exposure by Currency</h4>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-12">
+
+                                            <table data-id="collateral_value_body_here" id="" class="display table table-responsive" style="width:30%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Total Number</th>
+                                                        <th>Sum Value</th>
+                                                        <th>Currency</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="exposure_by_collateral_currency_table">
+
+                                                </tbody>
+
+                                            </table>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+
+                    </div>
+                    
                     <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->

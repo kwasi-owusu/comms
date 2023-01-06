@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__DIR__, 2) . '/template/statics/db/ConnectDatabase.php';
+
 !isset($_SESSION) ? session_start() : null;
 
 date_default_timezone_set("Africa/Accra");
@@ -90,10 +92,7 @@ class CTRLLoginUser
                     $officer_id             = isset($user['user_id']) ? $user['user_id'] : null;
                     $user_access_level      = isset($user['user_access_level']) ? $user['user_access_level'] : null;
 
-                    //user levels for agency
-                    $agency_access_levels = array("1", "2", "3");
-                    $agency_users_access_levels = array("1", "2");
-
+                  
                     if ($user_status == 0) {
 
                         $activities = array(

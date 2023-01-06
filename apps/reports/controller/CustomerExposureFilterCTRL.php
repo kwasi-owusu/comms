@@ -114,6 +114,7 @@ class CustomerExposureFilterCTRL
 
 
             $response_msg = array(
+                'response' => 'success',
                 'get_filter_for_collateral_list' => $get_filter_for_collateral_list,
                 'get_filter_for_collateral_by_currency' => $get_filter_for_collateral_by_currency,
                 'get_filter_for_facility_by_currency' => $get_filter_for_bonds_by_currency,
@@ -162,6 +163,7 @@ class CustomerExposureFilterCTRL
 
 
             $response_msg = array(
+                'response' => 'success',
                 'customer_id' => $customer_id,
                 'RSP_facility_amount' => $RSP_loans_amount,
                 'get_filter_for_facility_by_currency' => $get_filter_for_loans_by_currency,
@@ -210,6 +212,7 @@ class CustomerExposureFilterCTRL
 
 
             $response_msg = array(
+                'response' => 'success',
                 'customer_id' => $customer_id,
                 'RSP_facility_amount' => $RSP_overdraft_amount,
                 'get_filter_for_facility_by_currency' => $get_filter_for_overdraft_by_currency,
@@ -256,6 +259,7 @@ class CustomerExposureFilterCTRL
 
 
             $response_msg = array(
+                'response' => 'success',
                 'customer_id' => $customer_id,
                 'get_filter_for_facility_by_currency' => $get_filter_for_all_facilities_by_currency,
                 'filter_for_facility_by_currency_list' => $filter_for_overdraft_by_currency_list,
@@ -301,6 +305,7 @@ class CustomerExposureFilterCTRL
 
 
             $response_msg = array(
+                'response' => 'success',
                 'customer_id' => $customer_id,
                 'get_filter_for_facility_by_currency' => $get_filter_for_all_facilities_by_currency,
                 'filter_for_facility_by_currency_list' => $filter_for_overdraft_by_currency_list,

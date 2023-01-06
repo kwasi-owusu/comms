@@ -1,6 +1,5 @@
 <?php
 
-require_once dirname(__DIR__, 2) . '/template/statics/db/ConnectDatabase.php';
 class MDLFetchUsers{
 
     public static function loginUser($table_a, $table_b, $data){

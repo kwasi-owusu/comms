@@ -11,3 +11,8 @@ enum PasswordSecurity: int
     case password_expires_after_days    = 30;
     case password_min_num_of_chars      = 8;
 }
+
+enum ComsHashKeys: string
+{
+    case password_hash          = "b_systems_password_hash_for_comms";
+}
