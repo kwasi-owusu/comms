@@ -5,18 +5,21 @@ require_once dirname(__DIR__, 2) . '/template/statics/db/ConnectDatabase.php';
 require_once dirname(__DIR__) . '/model/MDLSaveNewUser.php';
 require_once dirname(__DIR__) . '/controller/AuthEnums.php';
 
-class CTRLSaveNewUser {
-   
+class CTRLSaveNewUser
+{
+
     private string $table_f;
-    
-    public function __construct($table_f){
-       
+
+    public function __construct($table_f)
+    {
+
         $this->table_f = $table_f;
     }
 
 
-    public function save_new_user(){
-      
+    public function save_new_user()
+    {
+
 
         $first_name     = isset($_POST['first_name']) ? strip_tags(trim($_POST['first_name'])) : null;
         $middle_name    = isset($_POST['middle_name']) ? strip_tags(trim($_POST['middle_name'])) : null;
@@ -34,7 +37,7 @@ class CTRLSaveNewUser {
 
         $password_hash_key      = ComsHashKeys::password_hash->value;
         $password               = hash_hmac('sha512', $pwd,  $password_hash_key);
-        
+
 
         $data = array(
             'first_name' => $first_name,
@@ -49,9 +52,7 @@ class CTRLSaveNewUser {
         $save = $instanceOfMDLSaveNewUser->save_new_user($data, $this->table_f);
 
         return $save;
-
     }
-
 }
 
 $callClass = new CTRLSaveNewUser('abms_users');

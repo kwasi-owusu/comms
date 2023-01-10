@@ -23,7 +23,7 @@ $overdraft_list_by_branch = $newInstanceOfBranchWiseReport->get_overdraft_record
 
 require_once dirname(__DIR__, 2) . '/reports/controller/CustomerExposerCTRL.php';
 
-$newInstanceOfCustomerExposure = new CustomerExposerCTRL('collateral_register', 'bonds_and_guarantee', 'loans', 'overdraft_register');
+$newInstanceOfCustomerExposure = new CustomerExposerCTRL('collateral_register', 'bonds_and_guarantee', 'loans', 'overdraft_register', 'all_branches');
 $bonds_and_guarantee_clients_list = $newInstanceOfCustomerExposure->get_bonds_and_guarantee_records();
 
 ?>

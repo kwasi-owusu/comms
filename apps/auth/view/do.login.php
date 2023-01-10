@@ -25,18 +25,33 @@ $_SESSION['login_tkn'] = $login_token;
                     <div class="col-lg-12">
                         <div class="card overflow-hidden">
                             <div class="row g-0">
+
+                            <div class="col-lg-6">
+                                    <div class="p-lg-5 p-4 auth-one-bg h-100">
+                                        <div class="bg-overlay"></div>
+                                        <div class="position-relative h-100 d-flex flex-column">
+                                            <div class="mb-4">
+                                                <a href="javascript:void(0);" class="d-block">
+                                                <img src="apps/template/statics/assets/images/logo_nn.png" alt="" style="width: 400px; margin:auto">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--
                                 <div class="col-lg-6" style="background: #000;">
                                     <div class="mb-4">
                                         <a href="javascript:void(0);" class="d-block">
-                                            <img src="apps/template/statics/assets/images/bs_bg.png" alt="" style="width:100%;">
+                                            <img src="apps/template/statics/assets/images/logo_nn.png" alt="" style="width: 400px; margin:auto">
                                         </a>
                                         <p style="color: #fff; padding:10px;">
-                                        Collateral Reporting Analytics Solution.
+                                        COLLATERAL MANAGEMENT ANALYTICS
                                             Developed by <a style="color: #fff;" href="https://www.bsystemslimited.com">Bsystems Limited</a>
                                         </p>
                                     </div>
                                 </div>
-                                <!-- end col -->
+                                < end col -->
 
                                 <div class="col-lg-6">
                                     <div class="p-lg-5 p-4">

@@ -26,11 +26,11 @@ class CTRLCollateralCategoryChart
         $instanceOfMDLCollateralCategoryChart = new MDLCollateralCategoryChart($newPDO, $thisPDO);
 
         $classification = array(
-            'NORM' => 'NORM',
-            'OLEM' => 'OLEM',
-            'SUB' => 'SUB',
-            'DOUBT' => 'DOUBT',
-            'LOSS' => 'LOSS'
+            'nrm' => 'NORM',
+            'olm' => 'OLEM',
+            'sbt' => 'SUBT',
+            'dbt' => 'DOUBT',
+            'lss' => 'LOSS'
         );
 
         $collateral_category = array(
@@ -38,18 +38,17 @@ class CTRLCollateralCategoryChart
             'PlantsAndMachinery' => 'PLANTS AND MACHINE',
             'BoardGuarantees' => 'BOARD GUARANTEE',
             'Inventory' => 'INVENTORY'
-
         );
 
         //for legal mortgage loans
         $legal_mortgage     = $instanceOfMDLCollateralCategoryChart->calculate_values_for_legal_mortgage($this->table_a, $classification, $collateral_category);
         $fetch_legal_loan   = $legal_mortgage->fetch(PDO::FETCH_ASSOC);
 
-        $normal_legal_loans = isset($fetch_legal_loan['NORMALCollateralValueForLegalMortgage']) ? $fetch_legal_loan['NORMALCollateralValueForLegalMortgage'] : 0;
-        $olem_legal_loans   = isset($fetch_legal_loan['OLEMCollateralValueForLegalMortgage']) ? $fetch_legal_loan['OLEMCollateralValueForLegalMortgage'] : 0;
-        $loss_legal_loans   = isset($fetch_legal_loan['LOSSCollateralValueForLegalMortgage']) ? $fetch_legal_loan['LOSSCollateralValueForLegalMortgage'] : 0;
-        $doubt_legal_loans  = isset($fetch_legal_loan['DOUBTCollateralValueForLegalMortgage']) ? $fetch_legal_loan['DOUBTCollateralValueForLegalMortgage'] : 0;
-        $sub_legal_loans    = isset($fetch_legal_loan['SUBTCollateralValueForLegalMortgage']) ? $fetch_legal_loan['SUBTCollateralValueForLegalMortgage'] : 0;
+        $normal_legal_loans = $fetch_legal_loan['NORMALCollateralValueForLegalMortgage'];
+        $olem_legal_loans   = $fetch_legal_loan['OLEMCollateralValueForLegalMortgage'];
+        $loss_legal_loans   = $fetch_legal_loan['LOSSCollateralValueForLegalMortgage'];
+        $doubt_legal_loans  = $fetch_legal_loan['DOUBTCollateralValueForLegalMortgage'];
+        $sub_legal_loans    = $fetch_legal_loan['SUBTCollateralValueForLegalMortgage'];
 
         $legal_mortgage_array = array(
 

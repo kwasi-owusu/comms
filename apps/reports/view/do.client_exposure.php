@@ -47,20 +47,16 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                         <div class="navbar-brand-box">
                             <!-- Dark Logo-->
                             <a href="javascript:void(0);" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
-                                </span>
+                               
                                 <span class="logo-lg">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
+                                    <img src="apps/template/statics/assets/images/logo_n.png" alt="" style="width: 120px; height:70px;">
                                 </span>
                             </a>
                             <!-- Light Logo-->
                             <a href="javascript:void(0);" class="logo logo-light">
-                                <span class="logo-sm">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
-                                </span>
+                               
                                 <span class="logo-lg">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
+                                    <img src="apps/template/statics/assets/images/logo_n.png" alt="" width="150">
                                 </span>
                             </a>
                         </div>
@@ -74,7 +70,7 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                         </button>
 
                         <div class="app-search position-relative">
-                            <h2>COLLATERAL REPORTING ANALYTICS SOLUTION</h2>
+                            <h2>COLLATERAL MANAGEMENT ANALYTICS</h2>
                         </div>
 
                     </div>
@@ -224,28 +220,6 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                                                         <td><?php echo isset($bdg['account_number']) ? $bdg['account_number'] : null; ?></td>
                                                                         <td><?php echo isset($bdg['totalAmt']) ? number_format($bdg['totalAmt'], 2) : null; ?></td>
                                                                         <td><?php echo isset($bdg['ccy']) ? $bdg['ccy'] : null; ?></td>
-                                                                        <!--
-                                                                        <td>
-                                                                            <div class="dropdown d-inline-block">
-                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                    <i class="ri-more-fill align-middle"></i>
-                                                                                </button>
-                                                                                <ul class="dropdown-menu dropdown-menu-end">
-
-                                                                                    <li><a data-bs-toggle="modal" data-bs-target="#myModal" href="#!" class="dropdown-item edit-item-btn"><i class="ri-home-fill align-bottom me-2 text-muted"></i>
-                                                                                            Collateral Details
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li><a data-bs-toggle="modal" data-bs-target="#myModal" href="#!" class="dropdown-item edit-item-btn"><i class="ri-home-fill align-bottom me-2 text-muted"></i>
-                                                                                            Exposure Analysis
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                -->
                                                                     </tr>
 
                                                                 <?php
@@ -295,28 +269,6 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                                                         <td><?php echo isset($lns['totalAmt']) ? number_format($lns['totalAmt'], 2) : null; ?></td>
                                                                         <td><?php echo isset($lns['currency']) ? $lns['currency'] : null; ?></td>
                                                                         <td><?php echo isset($lns['branch_name']) ? $lns['branch_name'] : null; ?></td>
-                                                                        <!--
-                                                                        <td>
-                                                                            <div class="dropdown d-inline-block">
-                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                    <i class="ri-more-fill align-middle"></i>
-                                                                                </button>
-                                                                                <ul class="dropdown-menu dropdown-menu-end">
-
-                                                                                    <li><a data-bs-toggle="modal" data-bs-target="#myModal" href="#!" class="dropdown-item edit-item-btn"><i class="ri-home-fill align-bottom me-2 text-muted"></i>
-                                                                                            Collateral Details
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li><a data-bs-toggle="modal" data-bs-target="#myModal" href="#!" class="dropdown-item edit-item-btn"><i class="ri-home-fill align-bottom me-2 text-muted"></i>
-                                                                                            Exposure Analysis
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                -->
                                                                     </tr>
 
                                                                 <?php
@@ -342,12 +294,10 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                                     </div>
                                                     <div class="tab-pane" id="overdraft_tab" role="tabpanel">
                                                         <h4 style="text-decoration: underline;">Overdraft</h4>
-
                                                         <table id="buttons-datatables" class="display table buttons-datatables table-responsive" style="width:100%">
                                                             <thead>
                                                                 <tr>
                                                                     <th>Customer ID</th>
-                                                                    <th>Branch Code</th>
                                                                     <th>Customer Name</th>
                                                                     <th>Account Number</th>
                                                                     <th>Total Amount</th>
@@ -363,32 +313,11 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                                                 ?>
                                                                     <tr>
                                                                         <td><?php echo isset($odf['customer_id']) ? $odf['customer_id'] : null; ?></td>
-                                                                        <td><?php echo isset($odf['branch_code']) ? $odf['branch_code'] : null; ?></td>
                                                                         <td><?php echo isset($odf['customer_name']) ? $odf['customer_name'] : null; ?></td>
                                                                         <td><?php echo isset($odf['account_number']) ? $odf['account_number'] : null; ?></td>
                                                                         <td><?php echo isset($odf['totalAmt']) ? number_format($odf['totalAmt'], 2) : null; ?></td>
                                                                         <td><?php echo isset($odf['account_currency']) ? $odf['account_currency'] : null; ?></td>
                                                                         <td>
-                                                                            <!--
-                                                                            <div class="dropdown d-inline-block">
-                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                    <i class="ri-more-fill align-middle"></i>
-                                                                                </button>
-                                                                                <ul class="dropdown-menu dropdown-menu-end">
-
-                                                                                    <li><a data-bs-toggle="modal" data-bs-target="#myModal" href="#!" class="dropdown-item edit-item-btn"><i class="ri-home-fill align-bottom me-2 text-muted"></i>
-                                                                                            Collateral Details
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li><a data-bs-toggle="modal" data-bs-target="#myModal" href="#!" class="dropdown-item edit-item-btn"><i class="ri-home-fill align-bottom me-2 text-muted"></i>
-                                                                                            Exposure Analysis
-                                                                                        </a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                -->
                                                                     </tr>
 
                                                                 <?php
@@ -400,7 +329,6 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                                             <tfoot>
                                                                 <tr>
                                                                     <th>Customer ID</th>
-                                                                    <th>Branch Code</th>
                                                                     <th>Customer Name</th>
                                                                     <th>Account Number</th>
                                                                     <th>Total Amount</th>
@@ -430,7 +358,7 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                 </div><!-- end card header -->
                                 <div class="card-body">
 
-                                    <table id="buttons-datatables" class="display table buttons-datatables btn-tables table-responsive" style="width:100%">
+                                    <table id="buttons-datatables" class="collateral_distinct_list display table buttons-datatables table-responsive" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Liability Number</th>
@@ -490,17 +418,26 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                                             ?>
 
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Liability Number</th>
-                                                <th>Customer Name</th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot>
-
                                     </table>
                                 </div>
                             </div>
+
+                            <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" id="modal_content_here">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
                         </div>
 
                     </div>
@@ -567,7 +504,7 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                         </div>
 
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="card">
@@ -631,23 +568,6 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
 
                         </div><!-- end row -->
 
-                        <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body" id="modal_content_here">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-
-
                     </div>
 
                     <div class="row">
@@ -682,7 +602,7 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                         </div><!-- end col -->
 
                     </div>
-                    
+
                     <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
@@ -706,6 +626,73 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
         ?>
 
         <script src="apps/reports/js/extra.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('.collateral_distinct_list').DataTable({
+                    dom: "Bfrtip",
+
+                    buttons: ["copy", "csv", "excel", "print"],
+
+                    responsive: {
+                        details: {
+                            display: $.fn.dataTable.Responsive.display.modal({
+                                header: function(row) {
+                                    var data = row.data();
+                                    return 'Details for ' + data[0] + ' ' + data[1];
+                                }
+                            }),
+                            renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                tableClass: 'table'
+                            })
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+                new DataTable("#ajax-datatables", {
+                    ajax: "apps/template/statics/assets/json/datatable.json"
+                });
+            });
+
+            $(".collateral_distinct_list tfoot th").each(function() {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('#overdraft_table_lists').DataTable({
+                    dom: "Bfrtip",
+
+                    buttons: ["copy", "csv", "excel", "print"],
+
+                    responsive: {
+                        details: {
+                            display: $.fn.dataTable.Responsive.display.modal({
+                                header: function(row) {
+                                    var data = row.data();
+                                    return 'Details for ' + data[0] + ' ' + data[1];
+                                }
+                            }),
+                            renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                tableClass: 'table'
+                            })
+                        }
+                    }
+                });
+            });
+           
+
+            $("#overdraft_table_lists tfoot th").each(function() {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+        </script>
+
+
 
 </body>
 

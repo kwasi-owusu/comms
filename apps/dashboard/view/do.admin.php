@@ -42,20 +42,16 @@ $collateral_lists = $instanceOfCollateralCTRL->lists_of_collaterals();
                         <div class="navbar-brand-box">
                             <!-- Dark Logo-->
                             <a href="javascript:void(0);" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
-                                </span>
+                               
                                 <span class="logo-lg">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
+                                    <img src="apps/template/statics/assets/images/logo_n.png" alt="" style="width: 150px;">
                                 </span>
                             </a>
                             <!-- Light Logo-->
                             <a href="javascript:void(0);" class="logo logo-light">
-                                <span class="logo-sm">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
-                                </span>
+                               
                                 <span class="logo-lg">
-                                    <img src="apps/template/statics/assets/images/logo.png" alt="" width="150">
+                                    <img src="apps/template/statics/assets/images/logo_n.png" alt="" width="150">
                                 </span>
                             </a>
                         </div>
@@ -69,7 +65,7 @@ $collateral_lists = $instanceOfCollateralCTRL->lists_of_collaterals();
                         </button>
 
                         <div class="app-search position-relative">
-                            <h2>COLLATERAL REPORTING ANALYTICS SOLUTION</h2>
+                            <h2>COLLATERAL MANAGEMENT ANALYTICS</h2>
                         </div>
 
                     </div>
@@ -493,7 +489,7 @@ $collateral_lists = $instanceOfCollateralCTRL->lists_of_collaterals();
                         <div class="col-xl-6">
                             <div class="card">
                                 <div class="card-header border-0 align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Count of Collateral By Currency</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Sum of Collateral By Currency</h4>
                                 </div><!-- end card header -->
                                 <div class="card-header p-0 border-0 bg-soft-light">
                                     <div class="row g-0 text-center" id="collateral_data_row">

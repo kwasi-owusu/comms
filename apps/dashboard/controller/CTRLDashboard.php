@@ -34,7 +34,7 @@ class CTRLDashboard
         $classification = array(
             'NORM' => 'NORM',
             'OLEM' => 'OLEM',
-            'SUB' => 'SUB',
+            'SUB' => 'SUBt',
             'DOUBT' => 'DOUBT',
             'LOSS' => 'LOSS'
         );
