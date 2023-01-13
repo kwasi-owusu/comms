@@ -47,14 +47,14 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                         <div class="navbar-brand-box">
                             <!-- Dark Logo-->
                             <a href="javascript:void(0);" class="logo logo-dark">
-                               
+
                                 <span class="logo-lg">
                                     <img src="apps/template/statics/assets/images/logo_n.png" alt="" style="width: 120px; height:70px;">
                                 </span>
                             </a>
                             <!-- Light Logo-->
                             <a href="javascript:void(0);" class="logo logo-light">
-                               
+
                                 <span class="logo-lg">
                                     <img src="apps/template/statics/assets/images/logo_n.png" alt="" width="150">
                                 </span>
@@ -684,7 +684,7 @@ $collateralByLiabilityNumber = $newInstanceForCollateralByDistinctLiability->get
                     }
                 });
             });
-           
+
 
             $("#overdraft_table_lists tfoot th").each(function() {
                 var title = $(this).text();

@@ -40,48 +40,47 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
       });
 
       if (d_data.response == "success") {
+        //$("#list_loader").hide();
 
-          //$("#list_loader").hide();
+        //setInterval("location.reload()", 3000);
 
-      //setInterval("location.reload()", 3000);
+        //$("#collateral_data_row").append('<div>' +sum_amount+'</div>'+'<div>'+currency_symbols_fl+'</div>');
 
-      //$("#collateral_data_row").append('<div>' +sum_amount+'</div>'+'<div>'+currency_symbols_fl+'</div>');
+        // var options = {
+        //   series: count_all,
+        //   chart: {
+        //     width: 380,
+        //     type: "pie",
+        //   },
+        //   labels: currency_symbols_fl,
+        //   responsive: [
+        //     {
+        //       breakpoint: 480,
+        //       options: {
+        //         chart: {
+        //           width: 200,
+        //           height: 320,
+        //         },
+        //         legend: {
+        //           position: "bottom",
+        //         },
+        //       },
+        //     },
+        //   ],
+        // };
 
-      // var options = {
-      //   series: count_all,
-      //   chart: {
-      //     width: 380,
-      //     type: "pie",
-      //   },
-      //   labels: currency_symbols_fl,
-      //   responsive: [
-      //     {
-      //       breakpoint: 480,
-      //       options: {
-      //         chart: {
-      //           width: 200,
-      //           height: 320,
-      //         },
-      //         legend: {
-      //           position: "bottom",
-      //         },
-      //       },
-      //     },
-      //   ],
-      // };
+        // var chart = new ApexCharts(
+        //   document.querySelector("#filter_metrics_charts"),
+        //   options
+        // );
 
-      // var chart = new ApexCharts(
-      //   document.querySelector("#filter_metrics_charts"),
-      //   options
-      // );
+        // chart.render();
 
-      // chart.render();
+        var myTableBody = $("#exposure_by_collateral_currency_table");
 
-      var myTableBody = $("#exposure_by_collateral_currency_table");
-
-      let tableRows = d_data.get_filter_for_collateral_by_currency.map(
-        (resultRow) =>
-          `<tr>
+        let tableRows = d_data.get_filter_for_collateral_by_currency.map(
+          (resultRow) =>
+            `<tr>
               <td>
                 ${resultRow.totalNumberOfCollaterals}
               </td>
@@ -92,64 +91,61 @@ $("#bonds_and_guarantee_filter").on("submit", function (e) {
                 ${resultRow.collateral_currency}
               </td>
             </tr>`
-      );
+        );
 
-      $("#exposure_by_collateral_currency_table").empty().append(tableRows);
-
+        $("#exposure_by_collateral_currency_table").empty().append(tableRows);
 
         //$(document).ready(function () {
-          if ($.fn.dataTable.isDataTable("#exposure_by_facility_table")) {
-            $("#exposure_by_facility_table").DataTable().destroy();
-            // var table = $("#exposure_by_facility_table").DataTable();
-            // table.clear();
-            // table.rows.add(data).draw();
-          } else {
-            $("#exposure_by_facility_table").DataTable({
-              order: [[1, "desc"]],
-              pageLength: 10,
+        if ($.fn.dataTable.isDataTable("#exposure_by_facility_table")) {
+          $("#exposure_by_facility_table").DataTable().destroy();
+          // var table = $("#exposure_by_facility_table").DataTable();
+          // table.clear();
+          // table.rows.add(data).draw();
+        } else {
+          $("#exposure_by_facility_table").DataTable({
+            order: [[1, "desc"]],
+            pageLength: 10,
 
-              ajax: {
-                url: "apps/reports/controller/CustomerExposureFilterCTRL.php?mode=filter_for_facility_by_currency_list",
-                dataSrc: "filter_for_facility_by_currency_list",
-                method: "POST",
-                dataType: "JSON",
-                data: {
-                  select_client: select_client,
-                  filter_action: filter_action,
-                  bonds_start_date: bonds_start_date,
-                  bonds_end_date: bonds_end_date,
-                },
+            ajax: {
+              url: "apps/reports/controller/CustomerExposureFilterCTRL.php?mode=filter_for_facility_by_currency_list",
+              dataSrc: "filter_for_facility_by_currency_list",
+              method: "POST",
+              dataType: "JSON",
+              data: {
+                select_client: select_client,
+                filter_action: filter_action,
+                bonds_start_date: bonds_start_date,
+                bonds_end_date: bonds_end_date,
               },
+            },
 
-              columns: [
-                { data: "customer_name" },
-                { data: "totalAmt" },
-                { data: "ccy" },
-              ],
+            columns: [
+              { data: "customer_name" },
+              { data: "totalAmt" },
+              { data: "ccy" },
+            ],
 
-              dom: "Bfrtip",
+            dom: "Bfrtip",
 
-              buttons: ["copy", "csv", "excel", "print"],
+            buttons: ["copy", "csv", "excel", "print"],
 
-              responsive: {
-                details: {
-                  display: $.fn.dataTable.Responsive.display.modal({
-                    header: function (row) {
-                      var data = row.data();
-                      return "Details for " + data[0] + " " + data[1];
-                    },
-                  }),
-                  renderer: $.fn.dataTable.Responsive.renderer.tableAll({
-                    tableClass: "table",
-                  }),
-                },
+            responsive: {
+              details: {
+                display: $.fn.dataTable.Responsive.display.modal({
+                  header: function (row) {
+                    var data = row.data();
+                    return "Details for " + data[0] + " " + data[1];
+                  },
+                }),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                  tableClass: "table",
+                }),
               },
-            });
-          }
+            },
+          });
+        }
         //});
       }
-
-    
     },
   });
 

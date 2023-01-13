@@ -74,18 +74,18 @@ class MDLCollateralCategoryChart implements ICollateralCategoryChartInterface
     public function calculate_values_for_plants_machines(string $table_a, array $classification, array $collateral_category): object
     {
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_category, classification, collateral_type, collateral_value, 
+        $stmt = $this->thisPDO->prepare("SELECT c.collateral_category, 
         
-        COUNT(CASE WHEN classification = :norm THEN collateral_id END) AS NORMALCollateralValueForPlantsAndMachinery,
-        COUNT(CASE WHEN classification = :olem THEN collateral_id END) AS OLEMCollateralValueForPlantsAndMachinery,
-        COUNT(CASE WHEN classification = :loss THEN collateral_id END) AS LOSSCollateralValueForPlantsAndMachinery,
-        COUNT(CASE WHEN classification = :doubt THEN collateral_id END) AS DOUBTCollateralValueForPlantsAndMachinery,
-        COUNT(CASE WHEN classification = :sub THEN collateral_id END) AS SUBTCollateralValueForPlantsAndMachinery
+        COUNT(CASE WHEN c.classification = :norm THEN collateral_id END) AS NORMALCollateralValueForPlantsAndMachinery,
+        COUNT(CASE WHEN c.classification = :olem THEN collateral_id END) AS OLEMCollateralValueForPlantsAndMachinery,
+        COUNT(CASE WHEN c.classification = :loss THEN collateral_id END) AS LOSSCollateralValueForPlantsAndMachinery,
+        COUNT(CASE WHEN c.classification = :doubt THEN collateral_id END) AS DOUBTCollateralValueForPlantsAndMachinery,
+        COUNT(CASE WHEN c.classification = :sub THEN collateral_id END) AS SUBTCollateralValueForPlantsAndMachinery
 
                 
-        FROM $table_a 
+        FROM $table_a c
         
-        WHERE collateral_category = :plant
+        WHERE c.collateral_category = :plant
         ");
 
         $stmt->bindParam(':norm', $classification['nrm'], PDO::PARAM_STR);
@@ -104,18 +104,17 @@ class MDLCollateralCategoryChart implements ICollateralCategoryChartInterface
     public function calculate_values_for_board_guarantee(string $table_a, array $classification, array $collateral_category): object
     {
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_category, classification, collateral_type, collateral_value, 
+        $stmt = $this->thisPDO->prepare("SELECT c.collateral_category, 
         
-        COUNT(CASE WHEN classification = :norm THEN collateral_id END) AS NORMALCollateralValueForBoardGuarantee,
-        COUNT(CASE WHEN classification = :olem THEN collateral_id END) AS OLEMCollateralValueForBoardGuarantee,
-        COUNT(CASE WHEN classification = :loss THEN collateral_id END) AS LOSSCollateralValueForBoardGuarantee,
-        COUNT(CASE WHEN classification = :doubt THEN collateral_id END) AS DOUBTCollateralValueForBoardGuarantee,
-        COUNT(CASE WHEN classification = :sub THEN collateral_id END) AS SUBTCollateralValueBoardGuarantee
+        COUNT(CASE WHEN c.classification = :norm THEN collateral_id END) AS NORMALCollateralValueForBoardGuarantee,
+        COUNT(CASE WHEN c.classification = :olem THEN collateral_id END) AS OLEMCollateralValueForBoardGuarantee,
+        COUNT(CASE WHEN c.classification = :loss THEN collateral_id END) AS LOSSCollateralValueForBoardGuarantee,
+        COUNT(CASE WHEN c.classification = :doubt THEN collateral_id END) AS DOUBTCollateralValueForBoardGuarantee,
+        COUNT(CASE WHEN c.classification = :sub THEN collateral_id END) AS SUBTCollateralValueBoardGuarantee
         
+        FROM $table_a c
         
-        FROM $table_a 
-        
-        WHERE collateral_category = :board
+        WHERE c.collateral_category = :board
         ");
 
         $stmt->bindParam(':norm', $classification['nrm'], PDO::PARAM_STR);
@@ -134,17 +133,17 @@ class MDLCollateralCategoryChart implements ICollateralCategoryChartInterface
     public function calculate_values_for_inventory(string $table_a, array $classification, array $collateral_category): object
     {
 
-        $stmt = $this->thisPDO->prepare("SELECT collateral_id, collateral_category, classification, collateral_type, collateral_value, 
+        $stmt = $this->thisPDO->prepare("SELECT c.collateral_category, 
         
-        COUNT(CASE WHEN classification = :norm THEN collateral_id END) AS NORMALCollateralValueForInventory,
-        COUNT(CASE WHEN classification = :olem THEN collateral_id END) AS OLEMCollateralValueForInventory,
-        COUNT(CASE WHEN classification = :loss THEN collateral_id END) AS LOSSCollateralValueForInventory,
-        COUNT(CASE WHEN classification = :doubt THEN collateral_id END) AS DOUBTCollateralValueForInventory,
-        COUNT(CASE WHEN classification = :sub THEN collateral_id END) AS SUBTCollateralValueForInventory
+        COUNT(CASE WHEN c.classification = :norm THEN collateral_id END) AS NORMALCollateralValueForInventory,
+        COUNT(CASE WHEN c.classification = :olem THEN collateral_id END) AS OLEMCollateralValueForInventory,
+        COUNT(CASE WHEN c.classification = :loss THEN collateral_id END) AS LOSSCollateralValueForInventory,
+        COUNT(CASE WHEN c.classification = :doubt THEN collateral_id END) AS DOUBTCollateralValueForInventory,
+        COUNT(CASE WHEN c.classification = :sub THEN collateral_id END) AS SUBTCollateralValueForInventory
                 
-        FROM $table_a 
+        FROM $table_a c
         
-        WHERE collateral_category = :inventory
+        WHERE c.collateral_category = :inventory
         ");
 
         $stmt->bindParam(':norm', $classification['nrm'], PDO::PARAM_STR);
