@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__) . '/controller/ISaveNewUser.php';
+require_once dirname(__DIR__) . '/interfaces/ISaveNewUserInterface.php';
 
 class MDLSaveNewUser implements ISaveNewUserInterface{
 

@@ -9,5 +9,9 @@ RewriteRule ^logout(.*)?$ apps/sign_out.php
 
 RewriteRule ^admin(.*)?$ apps/dashboard/view/do.admin.php
 
+RewriteRule ^change_password(.*)?$ apps/auth/view/do.change_password.phtml
+
+
 RewriteRule ^branch_wise_collateral(.*)?$ apps/reports/view/do.branch_wise_collateral.php
+RewriteRule ^client_grouping_and_filters(.*)?$ apps/reports/view/do.client_grouping_and_filters.php
 RewriteRule ^client_exposure(.*)?$ apps/reports/view/do.client_exposure.php

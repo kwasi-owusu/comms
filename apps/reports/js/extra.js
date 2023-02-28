@@ -275,3 +275,125 @@ function collateral_by_classification(itm) {
     }
   );
 }
+
+// function collateral_grouping(itm) {
+//   let group_by_val = $(itm).attr("data-grp");
+
+//   $.ajax({
+//     url: "apps/reports/controller/CollateralGroupingCTRL.php",
+//     method: "POST",
+//     //data: new FormData(this),
+//     //contentType: false,
+//     dataType: "JSON",
+//     data: {
+//       group_by_val: group_by_val
+//     },
+//     // cache: false,
+//     //processData: false,
+//     success: function (data_b) {
+    
+//       if (data_b.response == "success") {
+        
+//         $('#collateral_grouping_here').empty();
+       
+//           $("#exposure_by_facility_table").DataTable({
+//             order: [[1, "desc"]],
+//             pageLength: 10,
+
+//             ajax: {
+//               url: "apps/reports/controller/CollateralGroupingCTRL.php?mode=filter_for_facility_by_currency_list",
+//               dataSrc: "filter_for_facility_by_currency_list",
+//               method: "POST",
+//               dataType: "JSON",
+//               data: {
+//                 select_client: select_client,
+//                 filter_action: filter_action,
+//                 bonds_start_date: bonds_start_date,
+//                 bonds_end_date: bonds_end_date,
+//               },
+//             },
+
+//             columns: [
+//               { data: "customer_name" },
+//               { data: "totalAmt" },
+//               { data: "ccy" },
+//             ],
+
+//             dom: "Bfrtip",
+
+//             buttons: ["copy", "csv", "excel", "print"],
+
+//             responsive: {
+//               details: {
+//                 display: $.fn.dataTable.Responsive.display.modal({
+//                   header: function (row) {
+//                     var data = row.data();
+//                     return "Details for " + data[0] + " " + data[1];
+//                   },
+//                 }),
+//                 renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+//                   tableClass: "table",
+//                 }),
+//               },
+//             },
+//           });
+//         //}
+//         //});
+//       }
+//     },
+//   });
+
+//   $(document).ready(function () {
+//     if ($.fn.dataTable.isDataTable("#exposure_by_collateral_table")) {
+//       $("#exposure_by_collateral_table").DataTable().destroy();
+//       // var table = $("#exposure_by_collateral_table").DataTable();
+//       // table.clear();
+//       // table.rows.add(data).draw();
+//     } else {
+//       $("#exposure_by_collateral_table").DataTable({
+//         order: [[1, "desc"]],
+//         pageLength: 10,
+
+//         ajax: {
+//           url: "apps/reports/controller/CustomerExposureFilterCTRL.php?mode=get_filter_for_collateral_list",
+//           dataSrc: "get_filter_for_collateral_list",
+//           method: "POST",
+//           dataType: "JSON",
+//           data: {
+//             select_client: select_client,
+//             filter_action: filter_action,
+//             bonds_start_date: bonds_start_date,
+//             bonds_end_date: bonds_end_date,
+//           },
+//         },
+
+//         columns: [
+//           { data: "collateral_code" },
+//           { data: "account_number" },
+//           { data: "branch_name" },
+//           { data: "collateral_value" },
+//           { data: "collateral_currency" },
+//           { data: "classification" },
+//         ],
+
+//         dom: "Bfrtip",
+
+//         buttons: ["copy", "csv", "excel", "print"],
+
+//         responsive: {
+//           details: {
+//             display: $.fn.dataTable.Responsive.display.modal({
+//               header: function (row) {
+//                 var data = row.data();
+//                 return "Details for " + data[0] + " " + data[1];
+//               },
+//             }),
+//             renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+//               tableClass: "table",
+//             }),
+//           },
+//         },
+//       });
+//     }
+//   });
+// }

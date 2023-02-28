@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     },
   });
-}),
+});
 
   document.addEventListener("DOMContentLoaded", function () {
     new DataTable("#ajax-datatables", { ajax: "assets/json/datatable.json" });

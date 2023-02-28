@@ -15,32 +15,6 @@ class MDLCollateralCategoryChart implements ICollateralCategoryChartInterface
         $this->thisPDO      = $thisPDO;
     }
 
-
-    //     ---------------------------
-    // |  Stores |  Data  |  Qty |
-    // ---------------------------
-    // |    HM   | Sales  |  15  |
-    // |    RD   | Sales  |  10  |
-    // |    HM   | Return |   4  |
-    // |    RD   | Return |   2  |
-
-
-
-    // select fr.store,
-    // SUM(case when fr.data = 'Sales' then fr.qty end) as Sales,
-    // SUM(case when fr.data = 'Return' then fr.qty end) as Returns
-    // from full_report fr
-    // group by fr.store;
-
-
-    //     --------------------------
-    // | Store | Sales | Return |
-    // --------------------------
-    // |   HM  |   15   |   4   |
-    // |   RD  |   10   |   2   |
-
-
-
     public function calculate_values_for_legal_mortgage(string $table_a, array $classification, array $collateral_category): object
     {
 

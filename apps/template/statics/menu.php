@@ -10,19 +10,28 @@
         </li> <!-- end Dashboard Menu -->
 
         <li class="nav-item">
+            <a class="nav-link menu-link" href="client_grouping_and_filters">
+                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Client Grouping & Filters</span>
+            </a>
+        </li>
+
+
+        <!--
+        <li class="nav-item">
             <a class="nav-link menu-link" href="client_exposure">
                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Client Exposer Analysis</span>
             </a>
-        </li> <!-- end Dashboard Menu -->
+        </li>
+     -->
 
-       <!--
+        <!--
         <li class="nav-item">
             <a class="nav-link menu-link" href="branch_wise_collateral">
                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Branch Collateral Analysis</span>
             </a>
         </li> 
 -->
-        
+
         <!-- end Dashboard Menu -->
 
 

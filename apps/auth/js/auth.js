@@ -4,7 +4,7 @@ $("#user_loginForm").on("submit", function (e) {
   e.preventDefault();
 
   var email = $("#username").val();
- 
+
   $.ajax({
     url: "apps/auth/controller/CTRLLoginUser.php",
     method: "POST",
@@ -110,10 +110,13 @@ $("#update_my_password_frm").on("submit", function (e) {
     cache: false,
     processData: false,
     success: function (data) {
-      Snackbar.show({
-        text: data,
-        actionTextColor: "#fff",
-        backgroundColor: "#2196f3",
+      $.toast({
+        heading: "Collateral Report Management",
+        text: data.message,
+        icon: "info",
+        loader: true, // Change it to false to disable loader
+        position: "top-right",
+        loaderBg: "#000", // To change the background
       });
 
       $("#loader").hide();

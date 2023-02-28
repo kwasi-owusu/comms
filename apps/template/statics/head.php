@@ -18,7 +18,9 @@ header("Pragma: no-cache");
     <meta content="Bsystems Limited" name="author" />
     <meta http-equiv="refresh" content="1500; url=logout" />
     <!-- App favicon -->
+    <!--
     <link rel="shortcut icon" href="apps/template/statics/assets/images/favicon.png">
+-->
 
     <!-- plugin css -->
     <link href="apps/template/statics/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
@@ -39,11 +41,10 @@ header("Pragma: no-cache");
     <link rel="stylesheet" href="apps/template/statics/assets/toast/css/jquery.toast.css" />
 
     <!--datatable css-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="apps/template/statics/assets/datatables/css/dataTables.bootstrap5.min.css" />
     <!--datatable responsive css-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" href="apps/template/statics/assets/datatables/css/responsive.bootstrap.min.css" />
+    <link rel="stylesheet" href="apps/template/statics/assets/datatables/css/buttons.dataTables.min.css" />
 
     <style>
         tfoot input {
